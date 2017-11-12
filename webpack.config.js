@@ -9,20 +9,14 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      '@': path.resolve(__dirname, './src/'),
+      '@': path.resolve(__dirname, 'src'),
     },
   },
-  entry: ['./src/index.js', 'webpack-hot-middleware/client'],
+  entry: [path.resolve(__dirname, 'src/index.js'), 'webpack-hot-middleware/client'],
   output: {
     filename: 'js/[name].bundle.js?v=[hash]',
-    path: path.resolve(__dirname, './dist'),
-    publicPath: path.resolve(__dirname, '/'),
-  },
-  devServer: {
-    inline: true,
-    contentBase: path.resolve(__dirname, './dist'),
-    port: 3000,
-    hot: false,
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   module: {
     loaders: [
@@ -54,11 +48,11 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin([path.resolve(__dirname, './dist')]),
+    new CleanWebpackPlugin([path.resolve(__dirname, 'dist')]),
     new HtmlWebpackPlugin({
       title: 'React Pack',
       filename: 'index.html',
-      template: path.resolve(__dirname, './src/template/index.html'),
+      template: path.resolve(__dirname, 'src/template/index.html'),
       inject: false,
       minify: {
         collapseWhitespace: true,
